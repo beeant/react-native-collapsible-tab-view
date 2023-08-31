@@ -114,20 +114,19 @@ export const ScrollView = React.forwardRef<
 
     return (
       <ScrollViewMemo
+        contentContainerStyle={memoContentContainerStyle}
+        style={memoStyle}
+        onContentSizeChange={scrollContentSizeChangeHandlers}
+        refreshControl={memoRefreshControl}
+        onMomentumScrollBegin={scrollHandler}
         {...rest}
         onLayout={onLayout}
         ref={ref}
         bouncesZoom={false}
-        style={memoStyle}
-        contentContainerStyle={memoContentContainerStyle}
-        onScroll={scrollHandler}
-        onContentSizeChange={scrollContentSizeChangeHandlers}
         scrollEventThrottle={16}
         contentInset={memoContentInset}
         contentOffset={memoContentOffset}
         automaticallyAdjustContentInsets={false}
-        refreshControl={memoRefreshControl}
-        // workaround for: https://github.com/software-mansion/react-native-reanimated/issues/2735
         onMomentumScrollEnd={() => {}}
       >
         {children}
